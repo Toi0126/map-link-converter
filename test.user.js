@@ -39,7 +39,7 @@
 
     // 短縮URLなど、解釈できない形式は変更しない。
     const path = u.pathname.replace(/\/$/, '') || '/';
-    if (!['/', '/place', '/search', '/directions'].includes(path)) {
+    if (!['/', '/place', '/search', '/directions', '/frame'].includes(path)) {
       return null;
     }
 
@@ -107,7 +107,7 @@
     // 住所・検索語・座標リンク
     const address = get('address');
     const query = get('q', 'query');
-    const coord = get('coordinate', 'll');
+    const coord = get('coordinate', 'll', 'center');
 
     const validCoord =
       /^\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)\s*,\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)\s*$/.test(coord) &&
